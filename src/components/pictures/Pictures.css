@@ -1,0 +1,65 @@
+.articleDiv{
+    position: relative;
+    height: 53rem;
+    background-color: #B8A7C1;
+    padding-top: 10rem;
+}
+.articleDiv img, video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 1rem;
+    margin: 0.5%;
+}
+.pic{
+    width: 15.7rem;
+    transform: translateX(0.6rem) translateY(0rem);
+}
+.video{
+    width: 10.205rem;
+    transform: translateX(17.2rem) translateY(0rem);
+}
+.pic1{
+    width: 21.195rem;
+    transform: translateX(28.3rem) translateY(0rem);
+}
+.pic2{
+    width: 14.915rem;
+    transform: translateX(50.5rem) translateY(0rem);
+}
+.pic3{
+    width: 10.99rem;
+    transform: translateX(66.4rem) translateY(0rem);
+}
+.video1{
+    width: 15.7rem;
+    transform: translateX(0.5rem) translateY(24.5rem);
+}
+.pic4{
+    width: 10.2rem;
+    transform: translateX(17.2rem) translateY(18.6rem);
+}
+.pic5{
+    width: 18.5rem;
+    transform: translateX(17.2rem) translateY(29.3rem);
+}
+.pic6{
+    width: 28.2rem;
+    transform: translateX(36.7rem) translateY(36.9rem);
+}
+.video2{
+    width: 11.5rem;
+    transform: translateX(66rem) translateY(32rem);
+}
+.pic7{
+    width: 11.5rem;
+    transform: translateX(66rem) translateY(16.6rem);
+}
+.pic8{
+    width: 14.8rem;
+    transform: translateX(50.5rem) translateY(23.5rem);
+}
+.pic9{
+    width: 11rem;
+    transform: translateX(38rem) translateY(28.8rem);
+}

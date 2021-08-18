@@ -1,0 +1,22 @@
+.servicesAndAboutUs{
+    width: auto;
+    height: auto;
+    color: #323337 !important;
+    padding:1rem 2rem;
+    background-color: #B8A7C1;
+}
+h1{
+    text-align: center;
+    background-color: rgba(50,51,55, 0.5);
+    margin-top: 1rem;
+    border-radius: 1rem;
+}
+.events{
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}

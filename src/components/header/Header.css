@@ -1,0 +1,37 @@
+.headerDiv{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0rem 3rem;
+    /* position: fixed; */
+    /* z-index: 10000; */
+    background-color: #323337;
+    /* #35363A   7A757D */
+}
+.headerDiv img{
+    width: 23.3rem;
+}
+.headerDiv img:hover{
+    cursor: pointer;
+}
+.headerDiv ul{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 37.2rem;
+    background-color: #323337;
+    color: #B8A7C1;
+}
+.headerDiv li{
+    font-size: 1.15rem;
+    padding: 1.04rem;
+    background-color: #323337;
+    /* border-bottom: solid 1.5px #B8A7C1; */ 
+    /* border-width: 0%;  */
+}
+.headerDiv li:hover{
+    cursor: pointer;
+    border-width: 100%;
+    /* transition: border-width 250ms ease-in-out; */
+}

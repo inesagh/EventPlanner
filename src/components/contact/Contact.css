@@ -1,0 +1,32 @@
+.footer{
+    background-color: #323337 !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding: 2rem 0;
+}
+.footer a{
+    color: #656565 !important;
+    text-decoration: none;
+}
+.footer i{
+    color: #B8A7C1;
+    margin-right: 0.8rem;
+}
+i:hover{
+    cursor: pointer;
+}
+.contactUs>ul{
+    padding: 0;
+}
+.contactUs>h3{
+    margin-bottom: 0.8rem;
+    color: rgb(32,33,36);
+    font-size: 1.5rem;
+}
+.designcoding{
+    color: #656565;
+    text-align: right;
+    font-size: 0.8rem;
+}
