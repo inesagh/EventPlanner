@@ -1,9 +1,9 @@
 import React from 'react';
-import './EachEvent.css';
+import './eachEvent.css';
 
 const EachEvent = (props) => {
     return (
-        <div className='eachEvent'>
+        <div className='eachEvent' onClick={props.funcForCLicking}>
             <img src={props.image} />
             <h3>{props.eventName}</h3>
         </div>

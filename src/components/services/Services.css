@@ -3,13 +3,16 @@
     height: auto;
     color: #323337 !important;
     padding:1rem 2rem;
-    background-color: #B8A7C1;
+    /* background-color: #B8A7C1; */
 }
 h1{
     text-align: center;
-    background-color: rgba(50,51,55, 0.5);
-    margin-top: 1rem;
+    /* background-color: rgba(50,51,55, 0.5); */
     border-radius: 1rem;
+    width: 65%;
+    margin: 0 auto;
+    background-color: #B8A7C1;
+    margin-top: 1rem;
 }
 .events{
     height: auto;

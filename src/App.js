@@ -1,27 +1,17 @@
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import Header from './components/header/Header';
-import Pictures from './components/pictures/Pictures';
-import Services from './components/services/Services';
-import About from './components/about/About';
-import Contact from './components/contact/Contact';
-import Login from './components/account/Login';
-import Registration from './components/account/Registration';
+// import './App.css';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import BaseNavigation from './components/base.navigation';
+import MyAccount from './components/account/myaccount/MyAccount';
+import EachEmployeeDetails from './components/account/myaccount/employee/eachoccupation/eachemployee/eachemployeedetails/EachEmployeeDetails';
 
 const App = () => {
+
   return (
-    <div className="App">
-      <Header />
-      <Pictures />
-      <About />
-      <Services />
-      <Contact />
-      <Login forId={true} forClass={false} />
-    </div>
+    <Provider store={store}>
+      <BaseNavigation />
+    </Provider>
+    // <MyAccount />
   )
 }
 

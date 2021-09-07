@@ -1,5 +1,5 @@
 import React from 'react';
-import './Pictures.css';
+import './pictures.css';
 import pic from '../../media/eventpic.jpg';
 import pic1 from '../../media/eventpic4.jpg';
 import pic2 from '../../media/eventpic2.jpg';
