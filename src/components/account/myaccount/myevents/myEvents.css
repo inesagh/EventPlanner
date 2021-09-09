@@ -1,0 +1,23 @@
+#eventsId{
+    width: auto;
+    height: auto;
+    color: #323337 !important;
+    padding:1rem 2rem;
+    margin-top: 6.5rem;
+}
+.videosAndEvents{
+    display: grid;
+    grid-template-columns: auto 50% auto;
+    justify-content: space-between;
+}
+.h1AndEvents h1{
+    width: 90% !important;
+}
+.allMyEvents{
+    margin:1rem 0rem;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 2rem;
+    row-gap: 1rem;
+    justify-content: space-evenly;
+}

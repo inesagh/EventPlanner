@@ -1,0 +1,168 @@
+#registrationId{
+	display: block;
+	background-color: transparent;
+	display: flex;
+	flex-direction: column;
+	margin:0 auto;
+	font-family: 'PT Sans', sans-serif;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1111111;
+}
+#registrationId>div{
+    background-color: rgba(255,255 , 255, 1);
+	opacity: 1;
+	position: relative;
+    width: 40%;
+    margin: 7.5% auto 0;
+    padding: 18px 37px 32px;
+    overflow: hidden;
+	border-radius: 1rem;
+	height: 29rem;
+	overflow: scroll;
+}
+#registrationId>div::-webkit-scrollbar {
+	display: none;
+}  
+  /* Hide scrollbar for IE, Edge and Firefox */
+#registrationId>div {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+#registrationId>div>.iconpart{
+	color: #323337;
+	text-align: right;
+	margin-right: -4%;
+}
+#registrationId>div>.iconpart:hover{
+	cursor: pointer;
+	opacity: .7;
+}
+#registrationId>div>.iconpart>i{
+	font-size: 128%;
+}
+#registrationId>div>h2{
+	font-size: 22px;
+    line-height: 1;
+    padding: 0 0 30px;
+    text-align: center;
+	color: #323337;
+}
+#registrationId form{
+	display: flex;
+	flex-direction: column;
+	margin:0 auto;
+}
+#registrationId form>label, .roles{    
+	display: inline-block;
+    line-height: 1.4;
+    font-size: 100%;
+    padding-bottom: 6px;
+    color: #282828;
+}
+#registrationId form>input, .roles, .priceInAMD>input, textarea{
+	color: #282828;
+    border-color: #ccc;
+    background-color: transparent;
+    width: 100%;
+    font-family: inherit;
+    line-height: 1.6;
+    padding: 8px 10px;
+    border: 1px solid #e1e1e1;
+}
+.genderLabel{
+	display: inline-block;
+	color: #282828;
+}
+.genderClassname{
+	padding: 0;
+	width: 5% !important;
+}
+option{
+	width: 100%;
+	/* background: #B8A7C1; */
+}
+option:hover{
+	cursor: pointer;
+	/* background-color: yellow; */
+	box-shadow: 0 0 10px 100px #000 inset;
+}
+.mismatch{
+	color: red;
+	font-weight: bold;
+	font-size: 0.8rem;
+}
+.filesDiv>input{
+	width: 50%;
+}
+.fileWithMargin{
+	margin-bottom: 0.8rem;
+}
+.priceInAMD{
+	display: inline-block;
+}
+.priceInAMD>input{
+	width: 10%;
+	margin-right: 1rem;
+	text-align: center;
+}
+.priceInAMD>.priceInput{
+	width: 20%;
+}
+textarea{
+	resize: vertical;
+}
+#registrationId .firstbutton{
+	background-color: #323337;
+	border:none;
+	color:white;
+	padding: 12px;
+	margin-top: 20px;
+	font-size: 16px;
+	text-align: center;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+#registrationId .firstbutton:hover{
+	color: #fff;
+	opacity: .82;
+}
+#registrationId .or{
+	display: flex;
+	flex-direction: row;
+	align-items: baseline;
+	margin: 19px 0;
+}
+#registrationId .or>div{
+	border-bottom: 1px solid #ccc;
+	width: 50%;
+}
+#registrationId .or>span{
+	margin:10px 10px;
+	background: transparent;
+}
+#registrationId .secondbutton{
+	background-color: #323337;
+	border: 1px solid #ccc;
+	color:white;
+	padding: 12px;
+	font-size: 16px;
+	text-align: center;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+#registrationId .secondbutton:hover{
+	border-color: black;
+	opacity: .82;
+}
+#registrationId button>a{
+	text-decoration: none;
+	color:black;
+}

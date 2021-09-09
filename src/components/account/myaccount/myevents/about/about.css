@@ -1,0 +1,91 @@
+#aboutCustomer{
+	display: block;
+	background-color: transparent;
+	display: flex;
+	flex-direction: column;
+	margin:0 auto;
+	font-family: 'PT Sans', sans-serif;
+	opacity: 1;
+    width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1111111111;
+}
+#aboutCustomer>div{
+    /* background-color: #B8A7C1; */
+    background-color: white;
+	opacity: 1;
+	position: relative;
+    width: 50%;
+    margin: 7.5% auto 0;
+    padding: 18px 37px 32px;
+    overflow: hidden;
+	border-radius: 1rem;
+    height: 29rem;
+	overflow: scroll;
+}
+#aboutCustomer>div::-webkit-scrollbar {
+	display: none;
+}  
+  /* Hide scrollbar for IE, Edge and Firefox */
+#aboutCustomer>div {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+#aboutCustomer>div>.iconpart{
+	color: #323337;
+	text-align: right;
+	margin-right: -2%;
+}
+#aboutCustomer>div>.iconpart:hover{
+	cursor: pointer;
+	opacity: .7;
+}
+#aboutCustomer>div>.iconpart>i{
+	font-size: 128%;
+}
+#aboutCustomer>div>h2{
+	font-size: 22px;
+    line-height: 1;
+    padding: 0 0 30px;
+    text-align: center;
+	color: #323337;
+}
+.aboutDiv{
+    /* display: flex; */
+    position: relative;
+}
+.aboutPairs{
+    display: grid;
+    grid-template-columns: 40% 60%;
+    column-gap: 0.5rem;
+    row-gap: 0.8rem;
+    align-items: center;
+}
+.aboutPairs i{
+    font-size: 0.7rem;
+}
+.verticalLine{
+    /* height: auto; */
+    width: 0.1rem;
+    position: absolute;
+    border-left: thick solid #323337;
+}
+.aboutPairs img{
+    width: 10rem;
+    height: 10rem;
+}
+.protfolioOfAbout>img{
+    width: 8rem;
+    height: 8rem;
+    margin-right: 1rem;
+    margin-top: 0.5rem;
+}
+.personalInfo{
+    font-size: 1.25rem;
+    width: 100%;
+    font-weight: bolder;
+}

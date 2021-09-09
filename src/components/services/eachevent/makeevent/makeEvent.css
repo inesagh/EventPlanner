@@ -1,0 +1,102 @@
+#makeEventId{
+	display: block;
+	background-color: transparent;
+	display: flex;
+	flex-direction: column;
+	margin:0 auto;
+	font-family: 'PT Sans', sans-serif;
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1111111;
+}
+#makeEventId>div{
+    background-color: rgba(255,255 , 255, 1);
+    /* background-color: #B8A7C1; */
+	opacity: 1;
+	position: relative;
+    width: 40%;
+    margin: 7.5% auto 0;
+    padding: 18px 37px 32px;
+    overflow: hidden;
+	border-radius: 1rem;
+    height: 29rem;
+	overflow: scroll;
+}
+#makeEventId>div::-webkit-scrollbar {
+	display: none;
+}  
+  /* Hide scrollbar for IE, Edge and Firefox */
+#makeEventId>div {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+#makeEventId>div>.iconpart{
+	color: #323337;
+	text-align: right;
+	margin-right: -4%;
+}
+#makeEventId>div>.iconpart:hover{
+	cursor: pointer;
+	opacity: .7;
+}
+#makeEventId>div>.iconpart>i{
+	font-size: 128%;
+}
+#makeEventId>div>h2{
+	font-size: 22px;
+    line-height: 1;
+    padding: 0 0 30px;
+    text-align: center;
+	color: #323337;
+}
+.pairsForMakingEvent{
+	display: grid;
+	grid-template-columns: 40% 54.5%;
+	column-gap: 1.5rem;
+	row-gap: 0.8rem;
+	align-items: center;
+}
+.disabledSelect{
+	color: black;
+}
+select{
+	padding: 0.3rem 0;
+    background: transparent;
+}
+.line{
+	width: 100%;
+	height: 0.1rem;
+	border-bottom: 1px solid black;
+}
+.totalPrice{
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+#makeEventId button{
+	background-color: #323337;
+	border:none;
+	color:white;
+	padding: 0.7rem 1.7rem;
+	margin-top: 0.4rem;
+    margin-left: 18.8rem;
+	font-size: 0.9rem;
+	text-align: center;
+    opacity: 1;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+	text-decoration: none;
+}
+#makeEventId button:hover{
+	color: #fff;
+	opacity: .82;
+}
+.readyEvent{
+	height: 12.8rem !important;
+    text-align: center;
+	margin-top: 15% !important;
+}

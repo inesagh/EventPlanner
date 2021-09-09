@@ -6,7 +6,7 @@ import birthday from '../../media/birthday.jpg';
 import engagement from '../../media/engagement.jpg';
 import baptism from '../../media/baptism.jpg';
 import custom from '../../media/custom.jpg';
-import MakeEvent from './eachevent/makeevent/MakeEvent';
+import genderReveal from '../../media/asd.jpg';
 
 
 import { useDispatch } from 'react-redux';
@@ -16,8 +16,8 @@ import { changeTypes } from '../../redux/modal1.slice';
 import { eventFrom } from '../../redux/modal2.slice';
 
 const Services = (props) => {
-    const imageArray = [wedding, birthday, engagement, baptism, custom];
-    const eventNameArray = ["Wedding", "Birthday", "Engagement", "Baptism", "Custom"];
+    const imageArray = [wedding, birthday, engagement, genderReveal, baptism, custom];
+    const eventNameArray = ["Wedding", "Birthday", "Engagement", "Gender Reveal", "Baptism", "Custom"];
     let i = -1;
 
     const dispatch = useDispatch();

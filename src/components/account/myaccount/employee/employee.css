@@ -1,0 +1,15 @@
+#employees{
+    width: auto;
+    height: auto;
+    color: #323337 !important;
+    padding:1rem 2rem;
+    padding-top: 0rem;
+    /* background-color: #B8A7C1; */
+    /* margin-top: 100px; */
+    padding-top: 0.1rem;
+}
+#employees>h1{
+    width: 65%;
+    margin: 0 auto;
+    background-color: #B8A7C1;
+}

@@ -1,0 +1,52 @@
+.headerOfAccount{
+    position: fixed;
+    z-index: 11111;
+}
+.account{
+    position: relative;
+}
+.account>ul{
+    position: absolute;
+    width: 6rem;
+    padding: 0 1rem;
+    top: 3rem;
+    left: -2rem;
+    background-color: #323337;
+    color: #B8A7C1;
+    text-align: right;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s linear;
+    display: block;
+}
+.account:hover ul{
+    visibility: visible;
+    opacity: 1;
+}
+.account>ul>li{
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    background-color: #323337;
+}
+.signOut{
+    color: #B8A7C1;
+    text-decoration: none;
+}
+.withAnimation {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.withAnimation::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 1.5px;
+    background: #B8A7C1;
+    transition: width .3s;
+}
+
+.withAnimation:hover::after {
+    width: 100%;
+    transition: width .3s;
+}

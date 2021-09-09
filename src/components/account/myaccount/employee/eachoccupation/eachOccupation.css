@@ -1,0 +1,32 @@
+.eachOccupation{
+    margin:1rem 2rem;
+}
+.eachOccupation>h2 {
+    display: inline-block;
+    color: #323337;
+    text-decoration: none;
+    font-weight: 400;
+    margin:0rem 8rem;
+}
+.eachOccupation>h2::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #B8A7C1;
+    transition: width .3s;
+}
+
+.eachOccupation>h2:hover::after {
+    width: 100%;
+    transition: width .3s;
+}
+.eachOccupation>h2:hover{
+    cursor: pointer;
+}
+.employeesDiv{
+    height: auto;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    margin-top: 1rem;
+}
