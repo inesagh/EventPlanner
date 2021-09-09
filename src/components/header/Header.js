@@ -1,5 +1,5 @@
 import React from 'react';
-import './header.css';
+import 'header.css';
 import logo from '../../media/Rozvi Seri Logo.png';
 import { Link } from 'react-scroll';
 import { useDispatch } from 'react-redux';
