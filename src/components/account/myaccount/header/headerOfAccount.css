@@ -4,6 +4,7 @@
 }
 .account{
     position: relative;
+    display: inline-block;
 }
 .account>ul{
     position: absolute;

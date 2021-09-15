@@ -4,7 +4,11 @@ import { useDispatch } from 'react-redux';
 import { openModal } from '../../../redux/modal.slice';
 import ModalsEnum from '../../../enums/modal.enums';
 import axios from 'axios';
-import validator from 'validator'
+import validator from 'validator';
+import {
+    BrowserRouter as Router,
+    Link
+} from "react-router-dom";
 
 const Registration = (props) => {
     const [customer, setCustomer] = useState({
@@ -31,6 +35,7 @@ const Registration = (props) => {
 
     const dispatch = useDispatch();
 
+
     const [registration, setRegistration] = useState(false);
     const funcForLogin = () => {
         dispatch(openModal(ModalsEnum.LOGIN))
@@ -48,8 +53,6 @@ const Registration = (props) => {
     const afterRole = (e) => {
 
         setCustomer({ ...customer, ['role']: e.target.value });
-        // console.log("role", e.target.value);
-        // console.log("customerrole->", customer.role);
         if (customer.role === "CUSTOMER") {
             setEmployeeOrNot(true);
         } else {
@@ -63,16 +66,12 @@ const Registration = (props) => {
     const mismatchedPassword = <p className="mismatch">Password mismatch!</p>;
 
     const funcConfirmPassword = (e) => {
-        // if (customer.password !== null && customer.confirmPassword !== null) {
         if (customer.password === e.target.value) {
             setMismatchedOrNot(true);
             setCustomer({ ...customer, ['confirmPassword']: e.target.value })
         } else {
             setMismatchedOrNot(false);
         }
-        // }else{
-        //     setMismatchedOrNot(true);
-        // } 
     }
 
     const [notValidEmail, setNotValidEmail] = useState(false);
@@ -88,69 +87,53 @@ const Registration = (props) => {
         }
     };
 
+    const [error, setError] = useState("");
 
     const registrationObject = async () => {
-        await dispatch(openModal(ModalsEnum.LOGIN));
-        let res , res1;
+        let res;
+        if (customer.firstName && customer.lastName &&
+            customer.username &&
+            customer.password && customer.confirmPassword &&
+            customer.date && customer.email &&
+            customer.phone && customer.gender) {
+            console.log("asdadadadasd");
+            setError("");
 
-        if(customer.firstName || customer.lastName ||
-        customer.username ||
-        customer.password || customer.confirmPassword ||
-        customer.date || customer.email ||
-        customer.phone || customer.gender || 
-        customer.price || customer.description ||
-        customer.image1 || customer.logo){
+                if (customer.role == 'EMPLOYEE' && customer.occupation && customer.price 
+                && customer.description && customer.logo && customer.image1) {
+                    bodyForRegistration.append('logo', customer.logo);
+                    bodyForRegistration.append('image1', customer.image1);
+                    customer.logo = customer.logo.name;
+                    customer.image1 = customer.image1.name;
+                    bodyForRegistration.append('body', JSON.stringify(customer));
 
-            if(customer.role == 'EMPLOYEE'){
+                    // REQUEST for employee with multipart-form-data
+                    res = await axios({
+                        url: "http://localhost:8080/register",
+                        method: "post",
+                        data: bodyForRegistration,
+                        headers: { "Content-Type": "multipart/form-data" }});
 
-                bodyForRegistration.append('logo', customer.logo);
-                bodyForRegistration.append('image1', customer.image1);
+                    console.log(res);
 
-                // console.log(bodyForRegistration);            
-                // console.log(customer);
-
-                customer.logo = customer.logo.name;
-                customer.image1 = customer.image1.name;
-                bodyForRegistration.append('body', JSON.stringify(customer));
-
-
-                // res = await axios.all([
-                //     axios.post("http://localhost:8080/registration", customer),
-                //     axios.post("http://localhost:8080/register", bodyForRegistration,
-                //     {headers: { "Content-Type": "multipart/form-data" }})
-                // ]);
-                // console.log(res[0], res[1]);
-
-
-                res = await axios({
-                    url: "http://192.168.88.192:8080/register",
-                    method: "post",
-                    data: bodyForRegistration,
-                    headers: { "Content-Type": "multipart/form-data" }});
-
-                console.log(res);
-                console.log("response");
-
-
-                // await dispatch(openModal(ModalsEnum.LOGIN));
-
-                }else{
+                } else if(customer.role == "CUSTOMER") {
                     console.log(customer);
-                    res = await axios.post("http://192.168.88.192:8080/registration", customer);
-                }
-
-                if(res.data){
-                    console.log("aaaaaa");
-                    await dispatch(openModal(ModalsEnum.LOGIN));
+                    // REQUEST for customer with JSON
+                    res = await axios.post("http://localhost:8080/registration", customer);
                 } else {
-                    console.log("bbbbbb");
-                    await dispatch(openModal(ModalsEnum.REGISTRATION));
-                    alert("This username has been taken. Please try another one.");
+                    console.log('ASDAWDADAD from Empty Employee')
+                    return setError("Please fill in all required fields for registration.");
                 }
 
-        } else{
-            await dispatch(openModal(ModalsEnum.REGISTRATION));
-            alert("Please fill in all required fields for registration.");
+            if(res.data){
+                await dispatch(openModal(ModalsEnum.LOGIN));
+            } else {
+                return setError("This username has been taken. Please try another one.")
+            }
+
+        } else {
+            console.log('ASDAWDADAD')
+            return setError("Please fill in all required fields for registration.");
         }
     }
 
@@ -164,35 +147,35 @@ const Registration = (props) => {
                     <h2>Sign Up</h2>
                     <form>
                         <label htmlFor="name">First Name*</label>
-                        <input type="text" id="name" name="name" required onChange={(e) => {
+                        <input type="text" id="name" name="name" onChange={(e) => {
                             setCustomer({ ...customer, ['firstName']: e.target.value })
                         }
                         } /><br />
                         <label htmlFor="lastName">Last Name*</label>
-                        <input type="text" id="lastName" name="lastName" required onChange={(e) => {
+                        <input type="text" id="lastName" name="lastName" onChange={(e) => {
                             setCustomer({ ...customer, ['lastName']: e.target.value })
                         }
                         } /><br />
 
                         <label htmlFor="email">E-mail*</label>
-                        <input type="email" id="email" name="email" required onChange={mailValidation} />
+                        <input type="email" id="email" name="email" onChange={mailValidation} />
                         {
                             notValidEmail ? notValidEmailAddress : null
                         }
                         <br />
                         <label htmlFor="phone">Phone*</label>
-                        <input type="tel" id="phone" name="phone" required onChange={(e) => {
+                        <input type="tel" id="phone" name="phone" onChange={(e) => {
                             setCustomer({ ...customer, ['phone']: e.target.value })
                         }
                         } /><br />
 
                         <label>Gender*</label>
                         <div className="genderLabel">
-                            <label htmlFor="male"><input type="radio" id="male" className="genderClassname" name="gender" value="MALE" required onChange={(e) => {
+                            <label htmlFor="male"><input type="radio" id="male" className="genderClassname" name="gender" value="MALE" onChange={(e) => {
                                 setCustomer({ ...customer, ['gender']: e.target.value })
                             }} />
                                 Male    </label>
-                            <label htmlFor="female"><input type="radio" id="female" className="genderClassname" name="gender" value="FEMALE" required onChange={(e) => {
+                            <label htmlFor="female"><input type="radio" id="female" className="genderClassname" name="gender" value="FEMALE" onChange={(e) => {
                                 setCustomer({ ...customer, ['gender']: e.target.value })
                             }} />
                                 Female</label>
@@ -205,18 +188,18 @@ const Registration = (props) => {
                         }></input><br />
 
                         <label htmlFor="username">Username*</label>
-                        <input type="text" id="username" name="username" required onChange={(e) => {
+                        <input type="text" id="username" name="username" onChange={(e) => {
                             setCustomer({ ...customer, ['username']: e.target.value })
                         }
-                        }/><br />
+                        } /><br />
 
                         <label htmlFor="password">Password*</label>
-                        <input type="password" id="password" name="password" required onChange={(e) => {
+                        <input type="password" id="password" name="password" onChange={(e) => {
                             setCustomer({ ...customer, ['password']: e.target.value })
                         }
                         } /><br />
                         <label htmlFor="confirmPassword">Confirm Password*</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" required onChange={funcConfirmPassword} />
+                        <input type="password" id="confirmPassword" name="confirmPassword" onChange={funcConfirmPassword} />
                         {
                             !mismatchedOrNot ? mismatchedPassword : null
                         }
@@ -252,7 +235,7 @@ const Registration = (props) => {
                                     }} /><br />
 
                                 <label htmlFor="logo">Logo*</label>
-                                <input type="file" name="logo" required className="fileWithMargin" onChange={(e) => {
+                                <input type="file" name="logo" className="fileWithMargin" onChange={(e) => {
                                     setCustomer({
                                         ...customer, ['logo']: e.target.files[0]
                                     })
@@ -262,7 +245,7 @@ const Registration = (props) => {
 
                                 <label>Portfolio*</label>
                                 <div className="filesDiv">
-                                    <input type="file" name="file" required className="fileWithMargin" onChange={(e) => {
+                                    <input type="file" name="file" className="fileWithMargin" onChange={(e) => {
                                         setCustomer({
                                             ...customer, ['image1']: e.target.files[0]
                                         })
@@ -271,7 +254,7 @@ const Registration = (props) => {
 
                                 <label htmlFor="price">Price* /per work/</label>
                                 <div className="priceInAMD">
-                                    <input type="number" name="price" className="priceInput" required onChange={(e) => {
+                                    <input type="number" name="price" className="priceInput" onChange={(e) => {
                                         setCustomer({ ...customer, ['price']: e.target.value });
                                         console.log(customer.occupation);
                                     }} />
@@ -279,13 +262,14 @@ const Registration = (props) => {
                                 </div><br />
 
                                 <label htmlFor="description">Describe your work in 150 Characters*</label>
-                                <textarea maxLength="150" name="description" required onChange={(e) => {
+                                <textarea maxLength="150" name="description" onChange={(e) => {
                                     setCustomer({ ...customer, ['description']: e.target.value })
                                 }}></textarea>
                             </> : null
                         }
+                        <p style={{ color: "red", fontSize: "1rem", fontWeight: "600" }}>{error ? error : null}</p>
 
-                        <button name="btnone" className="firstbutton" onClick={registrationObject}>Sign Up</button>
+                        <Link to="" className="firstbutton" onClick={registrationObject}>Sign Up</Link>
                         <div className="or">
                             <div></div>
                             <span>or</span>

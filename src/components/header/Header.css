@@ -1,5 +1,5 @@
 .headerDiv{
-    margin-top: -104px;
+    margin-top: -6.5rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -9,6 +9,11 @@
     z-index: 10000;
     background-color: #323337;
     /* #35363A   7A757D */
+}
+.menuIcon{
+    color: #B8A7C1 !important;
+    font-size: 1.5rem;
+    display: none;
 }
 .headerDiv img{
     width: 23.3rem;
@@ -31,11 +36,28 @@
 .headerDiv li:hover{
     cursor: pointer;
 }
+.accountIcon{
+    display: inline-block;
+}
+.responsiveMenu{
+    width: 8.2rem !important;
+    padding-left: 0;
+    background-color: #323337;
+    display: block !important;
+    flex-wrap: wrap;
+    flex-direction: column !important;
+    position: absolute;
+    right: 0rem;
+    top: 6rem;
+    text-align: center;
+}
+.responsiveMenuNone{
+    display: none;
+}
 .withAnimation {
     display: inline-block;
     text-decoration: none;
 }
-
 .withAnimation::after {
     content: '';
     display: block;

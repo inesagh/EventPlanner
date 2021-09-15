@@ -25,43 +25,36 @@ const Login = () => {
     }
 
 
-    const funcForRegistration = () => {
-        dispatch(openModal(ModalsEnum.REGISTRATION))
+    const funcForRegistration = async () => {
+        await dispatch(openModal(ModalsEnum.REGISTRATION))
     }
 
     // 
-    const closeLogin = () => {
-        dispatch(openModal(ModalsEnum.CLOSE))
+    const closeLogin = async () => {
+        await dispatch(openModal(ModalsEnum.CLOSE))
     }
 
-    const [loggedInOrNot, setLoggedInOrNot] = useState("/");
-    let pathhh = "";
+    const [path, setPath] = useState("");
 
     const loginObject = async () => {
-        const userData = {
-            "username": username,
-            "password": password
+        let encoded = window.btoa(`${username}:${password}`);
+        localStorage.setItem("token", encoded);
+        console.log("after encoding " + localStorage.getItem("token"));
+
+        const asd = await axios.get("http://localhost:8080/login", {
+            headers:{
+                'Authorization': "Basic " + localStorage.getItem("token"),
+                'Access-Control-Allow-Origin' : 'http://localhost:3000' 
         }
-        // console.log(userData.username);
-        // console.log(userData.password);
-
-        // const res = await axios.post("http://localhost:8080/", userData);
-
-        const res = await axios.post("http://192.168.88.192:8080/login", {}, {
-            auth: {
-              username: userData.username,
-              password: userData.password
-            }
           });
-          console.log(res);
-        // if(res.data == null){
-            // setPathFromLogin("/");
-            // await dispatch(openModal(ModalsEnum.LOGIN));
-            // alert("There is not such an account. Please first register.");
-        // }else{
-            pathhh = "/account";
-            setLoggedInOrNot(pathhh);
-            await dispatch(openModal(ModalsEnum.CLOSE));
+          console.log(asd.data);
+        // await setPath("/account");
+        await dispatch(openModal(ModalsEnum.CLOSE));
+
+        // let res = true;
+        // if(!res){
+        //     await dispatch(openModal(ModalsEnum.REGISTRATION));
+        //     alert("There is not such an account. Please first register.");
         // }
     }
     
@@ -77,8 +70,8 @@ const Login = () => {
                         <input type="text" id="first" name="first" required onChange={forUsername} /><br />
                         <label htmlFor="second">Password *</label>
                         <input type="password" id="second" name="second" required onChange={forPassword} />
-                        <Link to="/account" className="firstbutton" onClick={loginObject}>Log In</Link>
 
+                        <Link to="/account" className="firstbutton" onClick={loginObject}>Log In</Link>
                         <div className="or">
                             <div></div>
                             <span>or</span>

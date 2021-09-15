@@ -6,18 +6,18 @@ import ModalsEnum from '../../../../enums/modal.enums';
 import { useSelector } from 'react-redux';
 
 
-const MakeEvent = (props) => {
+const MakeEvent = () => {
     const dispatch = useDispatch();
     const types = useSelector((state) => state.typesOfEvents.types);
     const makeEvent = useSelector((state) => state.makeEventFromService.makeEvent);
 
-    const closeLogin = () => {
-        dispatch(openModal(ModalsEnum.CLOSE));
+    const closeLogin = async () => {
+        return await dispatch(openModal(ModalsEnum.CLOSE));
     }
 
     let totalPrice = 0;
-    const funcForMakingEvent = () => {
-        dispatch(openModal(ModalsEnum.READYEVENT));
+    const funcForMakingEvent = async () => {
+        return await dispatch(openModal(ModalsEnum.READYEVENT));
     }
 
     return (
@@ -44,6 +44,13 @@ const MakeEvent = (props) => {
                                             <option>{types}</option>
                                         </select>
                                 }
+
+                                <label htmlFor="name">Name</label>
+                                <input type="text" maxLength="20" id="name" name="name" />
+
+                                <label htmlFor="date">Date</label>
+                                <input type="date" name="date" />
+
                                 <p>Florist</p>
                                 <select onChange={() => totalPrice}>
                                     <option>Option1/price/</option>
@@ -110,30 +117,39 @@ const MakeEvent = (props) => {
                         </>
                         :
                         <>
-                            <h2>Type</h2>
+                            <h2>EventName</h2>
                             <div className="pairsForMakingEvent">
+
+                                <p>Type</p>
+                                <p>aaaaa</p>
+
+                                <p>Date</p>
+                                <p>0000</p>
+
+                                <p>Serial Number</p>
+                                <p>1111</p>
 
                                 <p>Florist</p>
                                 <p>asd</p>
-                                
+
                                 <p>Photographer and/or <br /> videographer</p>
                                 <p>asd</p>
-                                
+
                                 <p>DJ</p>
                                 <p>asd</p>
-                                
+
                                 <p>Hairstylist</p>
                                 <p>asd</p>
-                                
+
                                 <p>Makeup artist</p>
                                 <p>asd</p>
-                                
+
                                 <p>Cake baker</p>
                                 <p>asd</p>
-                                
+
                                 <p>Buffet</p>
                                 <p>asd</p>
-                                
+
                                 <p>Decorator</p>
                                 <p>asd</p>
                             </div>

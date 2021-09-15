@@ -24,7 +24,7 @@
     padding: 18px 37px 32px;
     overflow: hidden;
 	border-radius: 1rem;
-    height: 29rem;
+	margin-bottom: 2rem;
 	overflow: scroll;
 }
 #aboutCustomer>div::-webkit-scrollbar {
@@ -67,12 +67,6 @@
 }
 .aboutPairs i{
     font-size: 0.7rem;
-}
-.verticalLine{
-    /* height: auto; */
-    width: 0.1rem;
-    position: absolute;
-    border-left: thick solid #323337;
 }
 .aboutPairs img{
     width: 10rem;
