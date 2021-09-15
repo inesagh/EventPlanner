@@ -41,15 +41,18 @@ const Login = () => {
         localStorage.setItem("token", encoded);
         console.log("after encoding " + localStorage.getItem("token"));
 
-        const asd = await axios.get("http://localhost:8080/login", {
+        const res = await axios.get("http://localhost:8080/login",{}, {
             headers:{
+                'Content-Type': 'text/html',
                 'Authorization': "Basic " + localStorage.getItem("token"),
-                'Access-Control-Allow-Origin' : 'http://localhost:3000' 
+                'Access-Control-Allow-Origin' : '*' 
         }
           });
-          console.log(asd.data);
+          console.log(res.data);
+
+
         // await setPath("/account");
-        await dispatch(openModal(ModalsEnum.CLOSE));
+        // await dispatch(openModal(ModalsEnum.CLOSE));
 
         // let res = true;
         // if(!res){
