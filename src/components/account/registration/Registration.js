@@ -109,7 +109,7 @@ const Registration = (props) => {
 
                     // REQUEST for employee with multipart-form-data
                     res = await axios({
-                        url: "http://100.24.206.36:8080/register",
+                        url: "https://backend.eventplanner.inchvorban.space/register",
                         method: "post",
                         data: bodyForRegistration,
                         headers: { "Content-Type": "multipart/form-data" }});
@@ -119,7 +119,7 @@ const Registration = (props) => {
                 } else if(customer.role == "CUSTOMER") {
                     console.log(customer);
                     // REQUEST for customer with JSON
-                    res = await axios.post("http://100.24.206.36:8080/registration", customer);
+                    res = await axios.post("https://backend.eventplanner.inchvorban.space/registration", customer);
                 } else {
                     console.log('ASDAWDADAD from Empty Employee')
                     return setError("Please fill in all required fields for registration.");
