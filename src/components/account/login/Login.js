@@ -41,7 +41,7 @@ const Login = () => {
         localStorage.setItem("token", encoded);
         console.log("after encoding " + localStorage.getItem("token"));
 
-        const res = await axios.get("http://localhost:8080/login",{}, {
+        const res = await axios.get("http://100.24.206.36:8080/login",{}, {
             headers:{
                 'Content-Type': 'text/html',
                 'Authorization': "Basic " + localStorage.getItem("token"),
