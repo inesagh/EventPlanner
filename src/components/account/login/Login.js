@@ -12,6 +12,7 @@ import axios from 'axios';
 
 const Login = () => {
     const dispatch = useDispatch();
+    localStorage.setItem("path", false);
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -35,9 +36,9 @@ const Login = () => {
     }
 
     const [error, setError] = useState("");
+    let closedPopup = false;
 
     const loginObject = async () => {
-        let path = "/";
         let encoded = window.btoa(`${username}:${password}`);
         localStorage.setItem("token", encoded);
         console.log("after encoding " + localStorage.getItem("token"));
@@ -50,13 +51,29 @@ const Login = () => {
                     'Access-Control-Allow-Origin': '*'
                 }
             });
+            console.log("aaaaaaa");
             console.log(res);
+            if (res.data) {
+                localStorage.setItem("path", true);
+                if(closedPopup){
+                    await dispatch(openModal(ModalsEnum.CLOSE));
+                }
+            }
         } catch {
-            path = "/";
+            console.log("aaaaaaaaa");
             setError("There is not such an account. Please first register.");
+            localStorage.setItem("path", false);
         }
+    }
 
-        return path;
+    const functForPath = () => {
+        if (localStorage.getItem("path") == "false") {
+            closedPopup = false;
+            return "/";
+        } else {
+            closedPopup = true;
+            return "/account";
+        }
     }
 
 
@@ -74,7 +91,7 @@ const Login = () => {
 
                         <p style={{ color: "red", fontSize: "1rem", fontWeight: "600" }}>{error ? error : null}</p>
 
-                        <Link to={loginObject} className="firstbutton" onClick={loginObject}>Log In</Link>
+                        <Link to={functForPath} className="firstbutton" onClick={loginObject}>Log In</Link>
                         <div className="or">
                             <div></div>
                             <span>or</span>
