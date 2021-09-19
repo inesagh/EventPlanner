@@ -34,33 +34,31 @@ const Login = () => {
         await dispatch(openModal(ModalsEnum.CLOSE))
     }
 
-    const [path, setPath] = useState("");
+    const [error, setError] = useState("");
 
     const loginObject = async () => {
+        let path = "/";
         let encoded = window.btoa(`${username}:${password}`);
         localStorage.setItem("token", encoded);
         console.log("after encoding " + localStorage.getItem("token"));
 
-        const res = await axios.get("https://backend.eventplanner.inchvorban.space/login",{}, {
-            headers:{
-                'Content-Type': 'text/html',
-                'Authorization': "Basic " + localStorage.getItem("token"),
-                'Access-Control-Allow-Origin' : '*' 
+        try {
+            const res = await axios.get("https://backend.eventplanner.inchvorban.space/login", {}, {
+                headers: {
+                    'Content-Type': 'text/html',
+                    'Authorization': "Basic " + localStorage.getItem("token"),
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
+            console.log(res);
+        } catch {
+            path = "/";
+            setError("There is not such an account. Please first register.");
         }
-          });
-          console.log(res.data);
 
-
-        // await setPath("/account");
-        // await dispatch(openModal(ModalsEnum.CLOSE));
-
-        // let res = true;
-        // if(!res){
-        //     await dispatch(openModal(ModalsEnum.REGISTRATION));
-        //     alert("There is not such an account. Please first register.");
-        // }
+        return path;
     }
-    
+
 
     return (
         <>
@@ -74,7 +72,9 @@ const Login = () => {
                         <label htmlFor="second">Password *</label>
                         <input type="password" id="second" name="second" required onChange={forPassword} />
 
-                        <Link to="/account" className="firstbutton" onClick={loginObject}>Log In</Link>
+                        <p style={{ color: "red", fontSize: "1rem", fontWeight: "600" }}>{error ? error : null}</p>
+
+                        <Link to={loginObject} className="firstbutton" onClick={loginObject}>Log In</Link>
                         <div className="or">
                             <div></div>
                             <span>or</span>
