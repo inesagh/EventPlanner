@@ -6,7 +6,6 @@ import pic2 from '../../media/eventpic2.jpg';
 import video from '../../media/eventvideo.mp4';
 import video1 from '../../media/eventvideo1.mp4';
 import pic3 from '../../media/eventpic1.jpg';
-// import pic4 from '../../media/eventpic7.jpg';
 import pic4 from '../../media/Web_Photo_Editor.jpg';
 import pic5 from '../../media/image.jpg';
 import pic6 from '../../media/eventpic88.jpg';

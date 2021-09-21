@@ -13,7 +13,6 @@ import AsideVideos from './asidevideos/AsideVideos';
 
 
 const MyEvents = (props) => {
-    // const array = props.yourEvents;
     const dispatch = useDispatch();
 
     const funcForAddCustomEvent = async () => {

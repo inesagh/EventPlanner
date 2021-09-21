@@ -9,12 +9,14 @@ const EachEmployee = (props) => {
     const dispatch = useDispatch();
 
     const funcForEachEmployee = async () => {
-        return await dispatch(openModal(ModalsEnum.EACHEMPLOYEEDETAIL));
+        await dispatch(openModal(ModalsEnum.EACHEMPLOYEEDETAIL));
+        localStorage.setItem("id", props.myId);
     }
+
     return (
         <div className="eachEmployee" onClick={funcForEachEmployee}>
-            <img src={props.profileImage} alt="logo" />
-            <h3>Random Employee</h3>
+            <img src={props.profileImage} />
+            <h3>{props.name}</h3>
         </div>
     )
 }

@@ -18,10 +18,10 @@ const Header = (props) => {
     const [xOrMenu, setXOrMenu] = useState("m");
 
     const funcSignOut = async () => {
-        return await dispatch(openModal(ModalsEnum.CLOSE))
+        await dispatch(openModal(ModalsEnum.CLOSE))
     }
     const funcForAbout = async () => {
-        return await dispatch(openModal(ModalsEnum.ABOUTOFCUSTOMER));
+        await dispatch(openModal(ModalsEnum.ABOUTOFCUSTOMER));
     }
 
     const funcForUl = () => {

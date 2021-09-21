@@ -12,12 +12,14 @@ import { changeTypes } from '../../../../../redux/modal1.slice';
 const EachMyEvent = (props) => {
     const dispatch = useDispatch();
 
+
     const funcForMakingEvent = async () => {
         if (props.description === "+") {
             await dispatch(eventFrom(1));
             await dispatch(changeTypes("Custom"));
         } else {
             await dispatch(eventFrom(0));
+            localStorage.setItem("clickedEventName", props.description);
         }
         await dispatch(openModal(ModalsEnum.SERVICEFROMACCOUNT))
     }

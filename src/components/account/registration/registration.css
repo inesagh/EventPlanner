@@ -89,7 +89,6 @@ option{
 }
 option:hover{
 	cursor: pointer;
-	/* background-color: yellow; */
 	box-shadow: 0 0 10px 100px #000 inset;
 }
 .mismatch{

@@ -15,7 +15,6 @@
 	z-index: 1111111111;
 }
 #detailsId>div{
-    /* background-color: #B8A7C1; */
     background-color: white;
 	opacity: 1;
 	position: relative;
@@ -47,6 +46,7 @@
     width: 13rem;
     height: 13rem;
     margin-left: 3rem;
+    border-radius: 1rem;
 }
 .info h2{
     font-size: 22px;
@@ -65,11 +65,14 @@ p{
 .works{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
+    margin-left: 3rem;
 }
 .works>img{
     width: 11rem;
     height: 11rem;
+    margin-right: 5rem;
+    border-radius: 1rem;
 }
 

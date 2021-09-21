@@ -4,6 +4,7 @@ import Employee from './employee/Employee';
 import Contact from '../../contact/Contact';
 import MyEvents from './myevents/MyEvents';
 import Service from '../../services/Services';
+import axios from 'axios';
 
 const MyAccount = () => {
     const arrayForEvents = [];
@@ -16,13 +17,13 @@ const MyAccount = () => {
 
 
     const getUsername = () => {
-        const res = ["asd", "EMPLOYEE", ["event", "event1", "event2"]];
-        // const res = await axios.post("http://192.168.202.118:8080/login", {}, {
+        const res = ["asd", "ocupation", ["event", "event1", "event2"]];
+        // const res = await axios.post("https://backend.eventplanner.inchvorban.space/login/events", {}, {
         //         headers:{'Authorization': "Basic " + localStorage.getItem("token")}
         //       }); 
         // await username = res.data[0];
         username = res[0];
-        if (res[1] == "CUSTOMER") {
+        if (res[1]) {
             serviceee = true;
         } else {
             serviceee = false;

@@ -36,33 +36,39 @@ const Login = () => {
     }
 
     const [error, setError] = useState("");
+    const [fill, setFill] = useState("");
     let closedPopup = false;
 
     const loginObject = async () => {
-        let encoded = window.btoa(`${username}:${password}`);
-        localStorage.setItem("token", encoded);
-        console.log("after encoding " + localStorage.getItem("token"));
+        if (username && password) {
+            let encoded = window.btoa(`${username}:${password}`);
+            localStorage.setItem("token", encoded);
+            console.log("after encoding " + localStorage.getItem("token"));
 
-        try {
-            const res = await axios.get("https://backend.eventplanner.inchvorban.space/login", {}, {
-                headers: {
-                    'Content-Type': 'text/html',
-                    'Authorization': "Basic " + localStorage.getItem("token"),
-                    'Access-Control-Allow-Origin': '*'
+            try {
+                const res = await axios.get("https://backend.eventplanner.inchvorban.space/login", {}, {
+                    headers: {
+                        'Content-Type': 'text/html',
+                        'Authorization': "Basic " + localStorage.getItem("token"),
+                        'Access-Control-Allow-Origin': '*'
+                    }
+                });
+                console.log("aaaaaaa");
+                console.log(res);
+                if (res.data) {
+                    localStorage.setItem("path", true);
+                    if (closedPopup) {
+                        await dispatch(openModal(ModalsEnum.CLOSE));
+                        await dispatch(openModal(ModalsEnum.CLOSE));
+                    }
                 }
-            });
-            console.log("aaaaaaa");
-            console.log(res);
-            if (res.data) {
-                localStorage.setItem("path", true);
-                if(closedPopup){
-                    await dispatch(openModal(ModalsEnum.CLOSE));
-                }
+            } catch {
+                console.log("aaaaaaaaa");
+                setError("There is not such an account. Please first register.");
+                localStorage.setItem("path", false);
             }
-        } catch {
-            console.log("aaaaaaaaa");
-            setError("There is not such an account. Please first register.");
-            localStorage.setItem("path", false);
+        } else {
+            setFill("Please fill in all required fields for registration.");
         }
     }
 
@@ -90,6 +96,7 @@ const Login = () => {
                         <input type="password" id="second" name="second" required onChange={forPassword} />
 
                         <p style={{ color: "red", fontSize: "1rem", fontWeight: "600" }}>{error ? error : null}</p>
+                        <p style={{ color: "red", fontSize: "1.5rem", fontWeight: "600" }}>{fill ? fill : null}</p>
 
                         <Link to={functForPath} className="firstbutton" onClick={loginObject}>Log In</Link>
                         <div className="or">

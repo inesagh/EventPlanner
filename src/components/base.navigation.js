@@ -21,13 +21,10 @@ const BaseNavigation = () => {
                 <Route exact path="/">
                     <div className="App">
                         <MainPage />
-                        {/* <Login forId={true} forClass={false} /> */}
-                        {/* <MyAccount /> */}
                         {modalId !== -1 && <ComponentsWrapper />}
                     </div>
                 </Route>
                 <Route path="/account" >
-                {/* children={<MyAccount />} */}
                     <div className="App">
                         <MyAccount />
                         {modalId !== -1 && <ComponentsWrapper />}
